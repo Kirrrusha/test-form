@@ -12,24 +12,20 @@ server.use(fileUpload({
     createParentPath: true
 }))
 
-const fields = ['name', 'female', 'phone', 'sex', 'about', 'advantages', 'radio', 'checkbox', 'nickname']
+const fields = ['name', 'female', 'email', 'phone', 'sex', 'about', 'advantages', 'radio', 'checkbox', 'nickname']
 
 server.post(`/api/form`, (req, res) => {
-    if (req.files && !req.files.image) {
-        res.statusCode = 400
-        return res.json({result: 'Загрузите файлы'})
-    }
     const {body} = req
     if (!fields.every(field => Object.keys(body).includes(field))) {
-        return res.json({result: 'Неправильное количество полей'})
+        return res.status(400).json({result: 'Неправильное количество полей'})
     }
     for (let key in body) {
-        const option = !fields.includes(key) || (key === 'advantages' || key === 'checkbox' ? !body[key] && !body[key].length : !body[key])
+        const option = !fields.includes(key) || (key === 'advantages' || key === 'checkbox' ? !body[key] || !body[key].length : !body[key])
         if (option) {
-            return res.json({result: `Ошибка в поле ${key}`})
+            return res.status(400).json({result: `Ошибка в поле ${key}`})
         }
     }
-    res.json({result: 'ok'})
+    res.status(200).json({result: 'ok'})
 });
 
 server.get('/api/form/:id', (req, res) => {
