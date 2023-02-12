@@ -3,10 +3,10 @@
 ## Technologies stack
 - [React](https://reactjs.org/docs/getting-started.html)
 - [Typescript](https://www.typescriptlang.org/docs/home.html)
-- [Redux](https://redux.js.org/api/api-reference) или [Redux-Toolkit](https://redux-toolkit.js.org/)
+- [Redux](https://redux.js.org/api/api-reference) или [Redux-Toolkit](https://redux-toolkit.js.org/), хороши бы было использовать RTK Query
 - [A proposal for bundling reducers, action types and actions when using Redux](https://github.com/erikras/ducks-modular-redux) Хороший подход к организации слоя данных
-- [Styled-components](https://styled-components.com/)
-- [Formik](https://formik.org/)
+- [Styled-components](https://styled-components.com/) | scss modules
+- [Formik](https://formik.org/) | react final form
 - [Yup](https://github.com/jquense/yup)
 
 ### Суть задачи
